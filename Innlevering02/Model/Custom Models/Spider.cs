@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using Innlevering02.Model.Custom_Models;
 
 namespace Innlevering02.Model
 {
@@ -8,20 +9,17 @@ namespace Innlevering02.Model
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class Spider : ViewModelBase
+    public class Spider : BaseEntity
     {
-        public int Health { get; set; }
-        public int Damage { get; set; }
-        public float MovementSpeed { get; set; }
-
         /// <summary>
         /// Initializes a new instance of the Spider class.
         /// </summary>
         public Spider()
         {
-            Health = 20;
-            Damage = 10;
-            MovementSpeed = 0.5f;
+            Name = "Spider";
+            Health = 15;
+            Damage = 5;
+            MovementSpeed = 2.5f;
         }
     }
 }

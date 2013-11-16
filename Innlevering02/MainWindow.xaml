@@ -8,7 +8,7 @@
         Height="598"
         Width="800"
         Title="MVVM Light Application"
-        DataContext="{Binding Main, Source={StaticResource Locator}}" ResizeMode="NoResize"
+        DataContext="{Binding EntityList, Source={StaticResource Locator}}" ResizeMode="NoResize"
         xmlns:userControl="clr-namespace:Innlevering02.User_Controls">
     
     <Window.Resources>
@@ -35,13 +35,7 @@
                     </Grid.RowDefinitions>
 
                     <Label Grid.Row="0" Grid.Column="0">Enemies</Label>
-                    <ListBox x:Name="EnemyList" Grid.Row="1" Grid.Column="0">
-                        <ListBoxItem>Buzzer</ListBoxItem>
-                        <ListBoxItem>Kamikaze Buzzer</ListBoxItem>
-                        <ListBoxItem>Mech</ListBoxItem>
-                        <ListBoxItem>Spider</ListBoxItem>
-                    </ListBox>
-                    
+                    <ListBox x:Name="EnemyList" Grid.Row="1" Grid.Column="0" SelectedIndex="{Binding EntityIndex}" ItemsSource="{Binding EntityCollection}" DisplayMemberPath="Name" />
                     <userControl:StatWindow Grid.Row="1" Grid.Column="1"></userControl:StatWindow>
                 </Grid>
             </TabItem>

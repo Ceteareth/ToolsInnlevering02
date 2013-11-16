@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using Innlevering02.Model.Custom_Models;
 
 namespace Innlevering02.Model
 {
@@ -8,19 +9,16 @@ namespace Innlevering02.Model
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class KamikazeBuzzer : ViewModelBase
+    public class KamikazeBuzzer : BaseEntity
     {
-        public int Health { get; set; }
-        public int Damage { get; set; }
-        public float MovementSpeed { get; set; }
-
         /// <summary>
         /// Initializes a new instance of the KamikazeBuzzer class.
         /// </summary>
         public KamikazeBuzzer()
         {
-            Health = 20;
-            Damage = 10;
+            Name = "KamikazeBuzzer";
+            Health = 10;
+            Damage = 20;
             MovementSpeed = 0.5f;
         }
     }

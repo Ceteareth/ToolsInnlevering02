@@ -4,8 +4,44 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300"
+             DataContext="{Binding Properties, Source={StaticResource Locator}}">
     <Grid>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <Grid Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Attributes" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Health" />
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Damage" />
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Movement Speed" />
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Is invincible" />
+
+            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SelectedEntityHealth}" />
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SelectedEntityDamage}" />
+            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding SelectedEntityMovementSpeed}" />
+            <CheckBox Grid.Row="4" Grid.Column="1" IsChecked="{Binding SelectedEntityIsInvincible}" Margin="21,2,-21,-3" />
+        </Grid>
+        
+        <Grid Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+        </Grid>
     </Grid>
 </UserControl>

@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using Innlevering02.Model.Custom_Models;
 
 namespace Innlevering02.Model
 {
@@ -8,19 +9,16 @@ namespace Innlevering02.Model
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class Mech : ViewModelBase
+    public class Mech : BaseEntity
     {
-        public int Health { get; set; }
-        public int Damage { get; set; }
-        public float MovementSpeed { get; set; }
-
         /// <summary>
         /// Initializes a new instance of the Mech class.
         /// </summary>
         public Mech()
         {
-            Health = 20;
-            Damage = 10;
+            Name = "Mech";
+            Health = 100;
+            Damage = 15;
             MovementSpeed = 0.5f;
         }
     }

@@ -39,6 +39,8 @@ namespace Innlevering02.ViewModel
             }
 
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<PropertyViewModel>();
+            SimpleIoc.Default.Register<ListViewModel>();
         }
 
         /// <summary>
@@ -60,6 +62,14 @@ namespace Innlevering02.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<PropertyViewModel>();
+            }
+        }
+
+        public ListViewModel EntityList
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ListViewModel>();
             }
         }
 

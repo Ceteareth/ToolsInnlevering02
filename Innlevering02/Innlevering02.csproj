@@ -72,6 +72,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Design\DesignDataService.cs" />
+    <Compile Include="Model\Custom Models\BaseEntity.cs" />
     <Compile Include="Model\Custom Models\Buzzer.cs" />
     <Compile Include="Model\DataItem.cs" />
     <Compile Include="Model\DataService.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="User Controls\StatWindow.xaml.cs">
       <DependentUpon>StatWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\ListViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\PropertyViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
