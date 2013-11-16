@@ -1,0 +1,54 @@
+﻿<Window x:Class="Innlevering02.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ignore="http://www.ignore.com"
+        mc:Ignorable="d ignore"
+        Height="598"
+        Width="800"
+        Title="MVVM Light Application"
+        DataContext="{Binding Main, Source={StaticResource Locator}}" ResizeMode="NoResize"
+        xmlns:userControl="clr-namespace:Innlevering02.User_Controls">
+    
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Skins/MainSkin.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid x:Name="LayoutRoot">
+        <TabControl>
+            <TabItem x:Name="Enemies" Header="Enemies">
+                <Grid x:Name="EnemyGrid">
+                    
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0">Enemies</Label>
+                    <ListBox x:Name="EnemyList" Grid.Row="1" Grid.Column="0">
+                        <ListBoxItem>Buzzer</ListBoxItem>
+                        <ListBoxItem>Kamikaze Buzzer</ListBoxItem>
+                        <ListBoxItem>Mech</ListBoxItem>
+                        <ListBoxItem>Spider</ListBoxItem>
+                    </ListBox>
+                    
+                    <userControl:StatWindow Grid.Row="1" Grid.Column="1"></userControl:StatWindow>
+                </Grid>
+            </TabItem>
+            
+            <TabItem x:Name="NamedEntities" Header="Named entities">
+                
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
