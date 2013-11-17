@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using Innlevering02.Model.Custom_Models;
+using Innlevering02.Model.Custom_Models.Property_Classes;
 
 namespace Innlevering02.Model
 {
@@ -17,9 +18,11 @@ namespace Innlevering02.Model
         public Spider()
         {
             Name = "Spider";
-            Health = 15;
-            Damage = 5;
-            MovementSpeed = 2.5f;
+            Health = new Health(20);
+            Damage = new Damage(5);
+            MovementSpeed = new MovementSpeed(20);
+            Invincible = new Invincible(false);
+            AddPropertiesToCollection();
         }
     }
 }

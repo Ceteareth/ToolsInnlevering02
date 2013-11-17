@@ -2,10 +2,42 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:innlevering02="clr-namespace:Innlevering02"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              DataContext="{Binding Properties, Source={StaticResource Locator}}">
+    
+    <UserControl.Resources>
+        <!-- Default DataTemplate -->
+        <DataTemplate x:Key="DefaultDataTemplate">
+            <Grid Margin="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="Key" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{Binding Name}" FontWeight="Bold"  />
+                <TextBox Grid.Column="1" Text="{Binding Value }" />
+            </Grid>
+        </DataTemplate>
+
+        <!-- DataTemplate for Booleans -->
+        <DataTemplate x:Key="BooleanDataTemplate">
+            <Grid Margin="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="Key" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{Binding Name}" FontWeight="Bold" />
+                <CheckBox Grid.Column="1" IsChecked="{Binding Value }" />
+            </Grid>
+        </DataTemplate>
+
+        <!-- DataTemplate Selector -->
+        <innlevering02:PropertyDataTemplateSelector x:Key="TemplateSelector"
+              DefaultDataTemplate="{StaticResource DefaultDataTemplate}"
+              BooleanDataTemplate="{StaticResource BooleanDataTemplate}" />
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -17,24 +49,11 @@
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-            </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Attributes" VerticalAlignment="Center"/>
-            <TextBlock Grid.Row="1" Grid.Column="0" Text="Health" />
-            <TextBlock Grid.Row="2" Grid.Column="0" Text="Damage" />
-            <TextBlock Grid.Row="3" Grid.Column="0" Text="Movement Speed" />
-            <TextBlock Grid.Row="4" Grid.Column="0" Text="Is invincible" />
-
-            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SelectedEntityHealth}" />
-            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SelectedEntityDamage}" />
-            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding SelectedEntityMovementSpeed}" />
-            <CheckBox Grid.Row="4" Grid.Column="1" IsChecked="{Binding SelectedEntityIsInvincible}" Margin="21,2,-21,-3" />
+            <ListBox ItemsSource="{Binding CurrentEntityProperties}" Grid.IsSharedSizeScope="True" 
+                 HorizontalContentAlignment="Stretch" 
+                 ItemTemplateSelector="{StaticResource TemplateSelector}" />
         </Grid>
         
         <Grid Column="1">

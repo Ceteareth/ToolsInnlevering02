@@ -9,9 +9,10 @@
         Width="800"
         Title="MVVM Light Application"
         DataContext="{Binding EntityList, Source={StaticResource Locator}}" ResizeMode="NoResize"
-        xmlns:userControl="clr-namespace:Innlevering02.User_Controls">
+        xmlns:userControl="clr-namespace:Innlevering02.User_Controls" >
     
     <Window.Resources>
+
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Skins/MainSkin.xaml" />

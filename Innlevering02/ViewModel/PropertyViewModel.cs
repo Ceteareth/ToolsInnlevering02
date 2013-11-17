@@ -8,14 +8,13 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
 using Innlevering02.Model;
 using Innlevering02.Model.Custom_Models;
+using Innlevering02.Model.Custom_Models.Property_Classes;
 
 namespace Innlevering02.ViewModel
 {
     public class PropertyViewModel : ViewModelBase
     {
-        private readonly IDataService _dataService;  
-
-        private const string SelectedEntityHealthPropertyName = "SelectedEntityHealth";
+        /*private const string SelectedEntityHealthPropertyName = "SelectedEntityHealth";
         public int SelectedEntityHealth
         {
             get
@@ -25,12 +24,9 @@ namespace Innlevering02.ViewModel
 
             set
             {
-                if (_currentlySelectedBaseEntity.Health != value)
-                {
-                    Console.WriteLine("Changed health from " + _currentlySelectedBaseEntity.Health + " to " + value);
-                    _currentlySelectedBaseEntity.Health = value;
-                    RaisePropertyChanged(SelectedEntityHealthPropertyName);
-                }
+                if (_currentlySelectedBaseEntity.Health == value) return;
+                _currentlySelectedBaseEntity.Health = value;
+                RaisePropertyChanged(SelectedEntityHealthPropertyName);
             }
         }
 
@@ -44,11 +40,9 @@ namespace Innlevering02.ViewModel
 
             set
             {
-                if (_currentlySelectedBaseEntity.Damage != value)
-                {
-                    _currentlySelectedBaseEntity.Damage = value;
-                    RaisePropertyChanged(SelectedEntityDamagePropertyName);
-                }
+                if (_currentlySelectedBaseEntity.Damage == value) return;
+                _currentlySelectedBaseEntity.Damage = value;
+                RaisePropertyChanged(SelectedEntityDamagePropertyName);
             }
         }
 
@@ -62,11 +56,9 @@ namespace Innlevering02.ViewModel
 
             set
             {
-                if (!_currentlySelectedBaseEntity.MovementSpeed.Equals(value))
-                {
-                    _currentlySelectedBaseEntity.MovementSpeed = value;
-                    RaisePropertyChanged(SelectedEntityMovementSpeedPropertyName);
-                }
+                if (_currentlySelectedBaseEntity.MovementSpeed.Equals(value)) return;
+                _currentlySelectedBaseEntity.MovementSpeed = value;
+                RaisePropertyChanged(SelectedEntityMovementSpeedPropertyName);
             }
         }
 
@@ -80,14 +72,28 @@ namespace Innlevering02.ViewModel
 
             set
             {
-                if (!_currentlySelectedBaseEntity.Invincible != value)
-                {
-                    _currentlySelectedBaseEntity.Invincible = value;
-                    RaisePropertyChanged(SelectedEntityIsInvinciblePropertyName);
-                }
+                if (!_currentlySelectedBaseEntity.Invincible == value) return;
+                _currentlySelectedBaseEntity.Invincible = value;
+                RaisePropertyChanged(SelectedEntityIsInvinciblePropertyName);
+            }
+        }*/
+
+        private const string CurrentEntityPropertiesPropertyName = "CurrentEntityProperties";
+        public ObservableCollection<BaseProperty> CurrentEntityProperties
+        {
+            get
+            {
+                return _currentEntityProperties;
+            }
+            set
+            {
+                if (_currentEntityProperties.Equals(value)) return;
+                _currentEntityProperties = value;
+                RaisePropertyChanged(CurrentEntityPropertiesPropertyName);
             }
         }
 
+        private ObservableCollection<BaseProperty> _currentEntityProperties; 
         private BaseEntity _currentlySelectedBaseEntity;
         private Buzzer _buzzer;
         private KamikazeBuzzer _kamikazeBuzzer;
@@ -95,65 +101,56 @@ namespace Innlevering02.ViewModel
         private Player _player;
         private Spider _spider;
 
+        public string Value { get; set; }
+        public Type TheType { get; set; }
+
         public PropertyViewModel()
         {
             Messenger.Default.Register<BaseEntity>(this, OnReceivedEntity);
+            _currentEntityProperties = new ObservableCollection<BaseProperty>();
             _currentlySelectedBaseEntity = new BaseEntity();
             _buzzer = new Buzzer();
             _kamikazeBuzzer = new KamikazeBuzzer();
             _mech = new Mech();
             _player = new Player();
             _spider = new Spider();
+            _currentEntityProperties = _spider.PropertyCollection;
         }
 
-        private void OnReceivedEntity(BaseEntity obj)
+        private void OnReceivedEntity<T>(T obj)
         {
-            SetCurrentEntity(obj);
-        }
-
-        private void SetCurrentEntity(BaseEntity obj)
-        {
-            if (_currentlySelectedBaseEntity.Name == _buzzer.Name)
+            if (obj.GetType() == _buzzer.GetType())
             {
-                _buzzer.Name = _currentlySelectedBaseEntity.Name;
-                _buzzer.Health = _currentlySelectedBaseEntity.Health;
-                _buzzer.Damage = _currentlySelectedBaseEntity.Damage;
-                _buzzer.MovementSpeed = _currentlySelectedBaseEntity.MovementSpeed;
-                _buzzer.Invincible = _currentlySelectedBaseEntity.Invincible;
+                Buzzer buzzer = obj as Buzzer;
+                if (buzzer != null)
+                {
+                    CurrentEntityProperties = buzzer.PropertyCollection;
+                }
             }
-            else if (_currentlySelectedBaseEntity.Name == _kamikazeBuzzer.Name)
+            else if (obj.GetType() == _kamikazeBuzzer.GetType())
             {
-                _kamikazeBuzzer.Name = _currentlySelectedBaseEntity.Name;
-                _kamikazeBuzzer.Health = _currentlySelectedBaseEntity.Health;
-                _kamikazeBuzzer.Damage = _currentlySelectedBaseEntity.Damage;
-                _kamikazeBuzzer.MovementSpeed = _currentlySelectedBaseEntity.MovementSpeed;
-                _kamikazeBuzzer.Invincible = _currentlySelectedBaseEntity.Invincible;
+                KamikazeBuzzer kamikazeBuzzer = obj as KamikazeBuzzer;
+                if (kamikazeBuzzer != null)
+                {
+                    CurrentEntityProperties = kamikazeBuzzer.PropertyCollection;
+                }
             }
-            else if (_currentlySelectedBaseEntity.Name == _mech.Name)
+            else if (obj.GetType() == _mech.GetType())
             {
-                _mech.Name = _currentlySelectedBaseEntity.Name;
-                _mech.Health = _currentlySelectedBaseEntity.Health;
-                _mech.Damage = _currentlySelectedBaseEntity.Damage;
-                _mech.MovementSpeed = _currentlySelectedBaseEntity.MovementSpeed;
-                _mech.Invincible = _currentlySelectedBaseEntity.Invincible;
+                Mech mech = obj as Mech;
+                if (mech != null)
+                {
+                    CurrentEntityProperties = mech.PropertyCollection;
+                }
             }
-            else if (_currentlySelectedBaseEntity.Name == _spider.Name)
+            else if (obj.GetType() == _spider.GetType())
             {
-                _spider.Name = _currentlySelectedBaseEntity.Name;
-                _spider.Health = _currentlySelectedBaseEntity.Health;
-                _spider.Damage = _currentlySelectedBaseEntity.Damage;
-                _spider.MovementSpeed = _currentlySelectedBaseEntity.MovementSpeed;
-                _spider.Invincible = _currentlySelectedBaseEntity.Invincible;
+                Spider spider = obj as Spider;
+                if (spider != null)
+                {
+                    CurrentEntityProperties = spider.PropertyCollection;
+                }
             }
-
-            SelectedEntityHealth = obj.Health;
-            SelectedEntityDamage = obj.Damage;
-            SelectedEntityMovementSpeed = obj.MovementSpeed;
-            SelectedEntityIsInvincible = obj.Invincible;
-
-            _currentlySelectedBaseEntity = obj;
-
-            Console.WriteLine(_currentlySelectedBaseEntity.Health);
         }
     }
 }

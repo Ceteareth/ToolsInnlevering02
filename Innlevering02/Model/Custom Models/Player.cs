@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using Innlevering02.Model.Custom_Models;
+using Innlevering02.Model.Custom_Models.Property_Classes;
 
 namespace Innlevering02.Model
 {
@@ -17,9 +18,11 @@ namespace Innlevering02.Model
         public Player()
         {
             Name = "Player";
-            Health = 100;
-            Damage = 10;
-            MovementSpeed = 1.5f;
+            Health = new Health(150);
+            Damage = new Damage(20);
+            MovementSpeed = new MovementSpeed(10);
+            Invincible = new Invincible(true);
+            AddPropertiesToCollection();
         }
     }
 }

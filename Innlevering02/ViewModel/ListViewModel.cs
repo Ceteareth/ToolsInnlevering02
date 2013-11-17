@@ -41,6 +41,7 @@ namespace Innlevering02.ViewModel
 
         public ListViewModel()
         {
+            Messenger.Default.Register<BaseEntity>(this, OnReturnedEntity);
             EntityCollection = new ObservableCollection<BaseEntity>();
             _buzzer = new Buzzer();
             _kamikazeBuzzer = new KamikazeBuzzer();
@@ -53,6 +54,11 @@ namespace Innlevering02.ViewModel
             EntityCollection.Add(_mech);
             EntityCollection.Add(_player);
             EntityCollection.Add(_spider);
+        }
+
+        private void OnReturnedEntity<T>(T obj)
+        {
+            Console.WriteLine("Received " + obj);
         }
     }
 }

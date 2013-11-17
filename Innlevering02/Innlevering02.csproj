@@ -74,6 +74,11 @@
     <Compile Include="Design\DesignDataService.cs" />
     <Compile Include="Model\Custom Models\BaseEntity.cs" />
     <Compile Include="Model\Custom Models\Buzzer.cs" />
+    <Compile Include="Model\Custom Models\Property Classes\BaseProperty.cs" />
+    <Compile Include="Model\Custom Models\Property Classes\Damage.cs" />
+    <Compile Include="Model\Custom Models\Property Classes\Health.cs" />
+    <Compile Include="Model\Custom Models\Property Classes\Invincible.cs" />
+    <Compile Include="Model\Custom Models\Property Classes\MovementSpeed.cs" />
     <Compile Include="Model\DataItem.cs" />
     <Compile Include="Model\DataService.cs" />
     <Compile Include="Model\IDataService.cs" />
@@ -81,11 +86,11 @@
     <Compile Include="Model\Custom Models\Mech.cs" />
     <Compile Include="Model\Custom Models\Player.cs" />
     <Compile Include="Model\Custom Models\Spider.cs" />
+    <Compile Include="PropertyDataTemplateSelector.cs" />
     <Compile Include="User Controls\StatWindow.xaml.cs">
       <DependentUpon>StatWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ListViewModel.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\PropertyViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="MainWindow.xaml">

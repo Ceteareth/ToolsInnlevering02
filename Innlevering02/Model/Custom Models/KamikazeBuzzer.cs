@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using Innlevering02.Model.Custom_Models;
+using Innlevering02.Model.Custom_Models.Property_Classes;
 
 namespace Innlevering02.Model
 {
@@ -17,9 +18,11 @@ namespace Innlevering02.Model
         public KamikazeBuzzer()
         {
             Name = "KamikazeBuzzer";
-            Health = 10;
-            Damage = 20;
-            MovementSpeed = 0.5f;
+            Health = new Health();
+            Damage = new Damage();
+            MovementSpeed = new MovementSpeed();
+            Invincible = new Invincible();
+            AddPropertiesToCollection();
         }
     }
 }
