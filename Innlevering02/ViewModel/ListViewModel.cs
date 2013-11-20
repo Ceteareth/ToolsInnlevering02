@@ -106,8 +106,10 @@ namespace Innlevering02.ViewModel
 
         public void SaveExecute()
         {
-            string json = JsonConvert.SerializeObject(UnnamedEntityCollection, Formatting.Indented);
-            System.IO.File.WriteAllText(@"C:\temp\Temp.json", json);
+            string unnamedEntities = JsonConvert.SerializeObject(UnnamedEntityCollection, Formatting.Indented);
+            string namedEntitites = JsonConvert.SerializeObject(NamedEntityCollection, Formatting.Indented);
+            string serializedData = string.Concat(unnamedEntities, namedEntitites);
+            System.IO.File.WriteAllText(@"C:\temp\Temp.json", serializedData);
         }
 
         public void LoadExecute()
