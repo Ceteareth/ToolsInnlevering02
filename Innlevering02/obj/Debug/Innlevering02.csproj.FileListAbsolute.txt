@@ -63,7 +63,6 @@ C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInn
 C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\bin\Debug\GalaSoft.MvvmLight.WPF4.xml
 C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\bin\Debug\GalaSoft.MvvmLight.Extras.WPF4.xml
 C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\bin\Debug\Microsoft.Practices.ServiceLocation.xml
-C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\bin\Debug\System.Windows.Interactivity.xml
 C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\obj\Debug\Innlevering02.csprojResolveAssemblyReference.cache
 C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\obj\Debug\Skins\MainSkin.baml
 C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\obj\Debug\MainWindow.g.cs
@@ -78,3 +77,14 @@ C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInn
 C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\obj\Debug\Innlevering02.g.resources
 C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\obj\Debug\Innlevering02.Properties.Resources.resources
 C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\obj\Debug\Innlevering02.csproj.GenerateResource.Cache
+C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\bin\Debug\de\System.Windows.Interactivity.resources.dll
+C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\bin\Debug\en\System.Windows.Interactivity.resources.dll
+C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\bin\Debug\es\System.Windows.Interactivity.resources.dll
+C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\bin\Debug\fr\System.Windows.Interactivity.resources.dll
+C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\bin\Debug\it\System.Windows.Interactivity.resources.dll
+C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\bin\Debug\ja\System.Windows.Interactivity.resources.dll
+C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\bin\Debug\ko\System.Windows.Interactivity.resources.dll
+C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\bin\Debug\ru\System.Windows.Interactivity.resources.dll
+C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
+C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll

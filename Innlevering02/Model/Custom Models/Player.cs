@@ -1,8 +1,9 @@
 ﻿using GalaSoft.MvvmLight;
-using Innlevering02.Model.Custom_Models;
-using Innlevering02.Model.Custom_Models.Property_Classes;
+using Innlevering02.Model.Custom_Models.Custom_Models;
+using Innlevering02.Model.Custom_Models.Custom_Models.Custom_Models;
+using Innlevering02.Model.Custom_Models.Custom_Models.Custom_Models.Property_Classes;
 
-namespace Innlevering02.Model
+namespace Innlevering02.Model.Custom_Models
 {
     /// <summary>
     /// This class contains properties that a View can data bind to.

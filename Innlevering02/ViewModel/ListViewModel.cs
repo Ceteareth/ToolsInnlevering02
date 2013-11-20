@@ -3,8 +3,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
-using Innlevering02.Model;
 using Innlevering02.Model.Custom_Models;
+using Innlevering02.Model.Custom_Models.Custom_Models.Custom_Models;
 
 namespace Innlevering02.ViewModel
 {

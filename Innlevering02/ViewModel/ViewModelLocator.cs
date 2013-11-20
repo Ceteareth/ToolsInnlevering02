@@ -12,7 +12,7 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
-using Innlevering02.Model;
+using Innlevering02.Model.Custom_Models;
 
 namespace Innlevering02.ViewModel
 {

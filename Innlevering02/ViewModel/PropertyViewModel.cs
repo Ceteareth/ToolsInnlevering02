@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
-using Innlevering02.Model;
 using Innlevering02.Model.Custom_Models;
-using Innlevering02.Model.Custom_Models.Property_Classes;
+using Innlevering02.Model.Custom_Models.Custom_Models.Custom_Models;
+using Innlevering02.Model.Custom_Models.Custom_Models.Custom_Models.Property_Classes;
 
 namespace Innlevering02.ViewModel
 {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Innlevering02.Model
+namespace Innlevering02.Model.Custom_Models
 {
     public class DataService : IDataService
     {
