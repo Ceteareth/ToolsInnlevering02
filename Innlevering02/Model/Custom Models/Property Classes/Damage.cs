@@ -11,21 +11,21 @@ namespace Innlevering02.Model.Custom_Models.Property_Classes
     /// </summary>
     public class Damage : BaseProperty
     {
-        public int Value { get; private set; }
+        private string _name = "Damage";
+        public override string Name { get { return _name; } set { _name = value; } }
+        public int Value { get; protected set; }
 
         public Damage()
         {
-            Name = "Damage";
             Value = 0;
         }
 
         public Damage(int damage)
         {
-            Name = "Damage";
             Value = damage;
         }
 
-        public override object ReturnValue()
+        public override object GetValue()
         {
             return Value;
         }

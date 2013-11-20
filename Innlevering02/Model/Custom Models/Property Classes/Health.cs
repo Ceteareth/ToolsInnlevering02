@@ -11,22 +11,21 @@ namespace Innlevering02.Model.Custom_Models.Property_Classes
     /// </summary>
     public class Health : BaseProperty
     {
-
+        private string _name = "Health";
+        public override string Name { get { return _name; } set { _name = value; } }
         public float Value { get; private set; }
 
         public Health()
         {
-            Name = "Health";
             Value = 0;
         }
 
         public Health(float health)
         {
-            Name = "Health";
             Value = health;
         }
 
-        public override object ReturnValue()
+        public override object GetValue()
         {
             return Value;
         }

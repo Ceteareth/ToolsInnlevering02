@@ -17,48 +17,58 @@ namespace Innlevering02.ViewModel
     public class ListViewModel : ViewModelBase
     {
 
-        public ObservableCollection<BaseEntity> EntityCollection
+        public ObservableCollection<BaseEntity> UnnamedEntityCollection
         {
             get; private set;
         }
 
-        private int _entityIndex;
-        public int EntityIndex
+        private int _unnamedEntityIndex;
+        public int UnnamedEntityIndex
         {
-            get { return _entityIndex; }
+            get { return _unnamedEntityIndex; }
             set
             {
-                _entityIndex = value;
-                Messenger.Default.Send<BaseEntity, PropertyViewModel>(EntityCollection.ElementAt(value));
+                _unnamedEntityIndex = value;
+                Console.WriteLine(UnnamedEntityCollection.ElementAt(value));
+                Messenger.Default.Send<BaseEntity, PropertyViewModel>(UnnamedEntityCollection.ElementAt(value));
             }
         }
 
-        private Buzzer _buzzer;
-        private KamikazeBuzzer _kamikazeBuzzer;
-        private Mech _mech;
-        private Player _player;
-        private Spider _spider;
+        public ObservableCollection<BaseEntity> NamedEntityCollection
+        {
+            get;
+            private set;
+        }
+
+        private int _namedEntityIndex;
+        public int NamedEntityIndex
+        {
+            get { return _namedEntityIndex; }
+            set
+            {
+                _namedEntityIndex = value;
+                Console.WriteLine(NamedEntityCollection.ElementAt(value));
+                Messenger.Default.Send<BaseEntity, PropertyViewModel>(NamedEntityCollection.ElementAt(value));
+            }
+        }
 
         public ListViewModel()
         {
-            Messenger.Default.Register<BaseEntity>(this, OnReturnedEntity);
-            EntityCollection = new ObservableCollection<BaseEntity>();
-            _buzzer = new Buzzer();
-            _kamikazeBuzzer = new KamikazeBuzzer();
-            _mech = new Mech();
-            _player = new Player();
-            _spider = new Spider();
+            UnnamedEntityCollection = new ObservableCollection<BaseEntity>
+            {
+                new Buzzer(),
+                new KamikazeBuzzer(),
+                new Mech(),
+                new Spider()
+            };
+            UnnamedEntityIndex = 0;
 
-            EntityCollection.Add(_buzzer);
-            EntityCollection.Add(_kamikazeBuzzer);
-            EntityCollection.Add(_mech);
-            EntityCollection.Add(_player);
-            EntityCollection.Add(_spider);
-        }
-
-        private void OnReturnedEntity<T>(T obj)
-        {
-            Console.WriteLine("Received " + obj);
+            NamedEntityCollection = new ObservableCollection<BaseEntity>
+            {
+                new Player(),
+                new ConfusedMech()
+            };
+            NamedEntityIndex = 0;
         }
     }
 }

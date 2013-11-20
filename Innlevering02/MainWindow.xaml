@@ -21,9 +21,22 @@
     </Window.Resources>
 
     <Grid x:Name="LayoutRoot">
-        <TabControl>
-            <TabItem x:Name="Enemies" Header="Enemies">
-                <Grid x:Name="EnemyGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Menu IsMainMenu="True">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Save"></MenuItem>
+                <MenuItem Header="_Open"></MenuItem>
+                <MenuItem Header="_Close"></MenuItem>
+            </MenuItem>
+        </Menu>
+        
+        <TabControl Grid.Row="1">
+            <TabItem x:Name="UnnamedEntities" Header="Unnamed entities">
+                <Grid x:Name="UnnamedEntityGrid">
                     
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -35,14 +48,29 @@
                         <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
 
-                    <Label Grid.Row="0" Grid.Column="0">Enemies</Label>
-                    <ListBox x:Name="EnemyList" Grid.Row="1" Grid.Column="0" SelectedIndex="{Binding EntityIndex}" ItemsSource="{Binding EntityCollection}" DisplayMemberPath="Name" />
+                    <Label Grid.Row="0" Grid.Column="0">Unnamed Entities</Label>
+                    <ListBox x:Name="UnnamedEntityList" Grid.Row="1" Grid.Column="0" SelectedIndex="{Binding UnnamedEntityIndex}" ItemsSource="{Binding UnnamedEntityCollection}" DisplayMemberPath="Name" />
                     <userControl:StatWindow Grid.Row="1" Grid.Column="1"></userControl:StatWindow>
                 </Grid>
             </TabItem>
             
             <TabItem x:Name="NamedEntities" Header="Named entities">
-                
+                <Grid x:Name="NamedEntityGrid">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0">Named Entities</Label>
+                    <ListBox x:Name="EnemyList" Grid.Row="1" Grid.Column="0" SelectedIndex="{Binding NamedEntityIndex}" ItemsSource="{Binding NamedEntityCollection}" DisplayMemberPath="Name" />
+                    <userControl:StatWindow Grid.Row="1" Grid.Column="1"></userControl:StatWindow>
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>

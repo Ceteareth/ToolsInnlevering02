@@ -24,7 +24,7 @@ namespace Innlevering02
         {
             BaseProperty baseProperty = item as BaseProperty;
 
-            if (baseProperty != null && baseProperty.ReturnValue() is bool)
+            if (baseProperty != null && baseProperty.GetValue() is bool)
             {
                 return BooleanDataTemplate;
             }

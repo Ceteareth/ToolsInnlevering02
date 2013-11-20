@@ -74,7 +74,10 @@
     <Compile Include="Design\DesignDataService.cs" />
     <Compile Include="Model\Custom Models\BaseEntity.cs" />
     <Compile Include="Model\Custom Models\Buzzer.cs" />
+    <Compile Include="Model\Custom Models\ConfusedMech.cs" />
     <Compile Include="Model\Custom Models\Property Classes\BaseProperty.cs" />
+    <Compile Include="Model\Custom Models\Property Classes\Confused.cs" />
+    <Compile Include="Model\Custom Models\Property Classes\Creepy.cs" />
     <Compile Include="Model\Custom Models\Property Classes\Damage.cs" />
     <Compile Include="Model\Custom Models\Property Classes\Health.cs" />
     <Compile Include="Model\Custom Models\Property Classes\Invincible.cs" />

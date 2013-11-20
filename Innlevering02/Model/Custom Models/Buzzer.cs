@@ -18,9 +18,9 @@ namespace Innlevering02.Model
         public Buzzer()
         {
             Name = "Buzzer";
-            Health = new Health();
-            Damage = new Damage();
-            MovementSpeed = new MovementSpeed();
+            Health = new Health(20);
+            Damage = new Damage(5);
+            MovementSpeed = new MovementSpeed(1);
             Invincible = new Invincible();
             AddPropertiesToCollection();
         }

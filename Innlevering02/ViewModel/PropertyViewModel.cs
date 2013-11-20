@@ -14,70 +14,7 @@ namespace Innlevering02.ViewModel
 {
     public class PropertyViewModel : ViewModelBase
     {
-        /*private const string SelectedEntityHealthPropertyName = "SelectedEntityHealth";
-        public int SelectedEntityHealth
-        {
-            get
-            {
-                return _currentlySelectedBaseEntity.Health;
-            }
-
-            set
-            {
-                if (_currentlySelectedBaseEntity.Health == value) return;
-                _currentlySelectedBaseEntity.Health = value;
-                RaisePropertyChanged(SelectedEntityHealthPropertyName);
-            }
-        }
-
-        private const string SelectedEntityDamagePropertyName = "SelectedEntityDamage";
-        public int SelectedEntityDamage
-        {
-            get
-            {
-                return _currentlySelectedBaseEntity.Damage;
-            }
-
-            set
-            {
-                if (_currentlySelectedBaseEntity.Damage == value) return;
-                _currentlySelectedBaseEntity.Damage = value;
-                RaisePropertyChanged(SelectedEntityDamagePropertyName);
-            }
-        }
-
-        private const string SelectedEntityMovementSpeedPropertyName = "SelectedEntityMovementSpeed";
-        public float SelectedEntityMovementSpeed
-        {
-            get
-            {
-                return _currentlySelectedBaseEntity.MovementSpeed;
-            }
-
-            set
-            {
-                if (_currentlySelectedBaseEntity.MovementSpeed.Equals(value)) return;
-                _currentlySelectedBaseEntity.MovementSpeed = value;
-                RaisePropertyChanged(SelectedEntityMovementSpeedPropertyName);
-            }
-        }
-
-        private const string SelectedEntityIsInvinciblePropertyName = "SelectedEntityIsInvincible";
-        public bool SelectedEntityIsInvincible
-        {
-            get
-            {
-                return _currentlySelectedBaseEntity.Invincible;
-            }
-
-            set
-            {
-                if (!_currentlySelectedBaseEntity.Invincible == value) return;
-                _currentlySelectedBaseEntity.Invincible = value;
-                RaisePropertyChanged(SelectedEntityIsInvinciblePropertyName);
-            }
-        }*/
-
+        #region Properties
         private const string CurrentEntityPropertiesPropertyName = "CurrentEntityProperties";
         public ObservableCollection<BaseProperty> CurrentEntityProperties
         {
@@ -93,33 +30,39 @@ namespace Innlevering02.ViewModel
             }
         }
 
-        private ObservableCollection<BaseProperty> _currentEntityProperties; 
-        private BaseEntity _currentlySelectedBaseEntity;
-        private Buzzer _buzzer;
-        private KamikazeBuzzer _kamikazeBuzzer;
-        private Mech _mech;
-        private Player _player;
-        private Spider _spider;
+        private const string CurrentInfoStringPropertyName = "CurrentInfoString";
+
+        public string CurrentInfoString
+        {
+            get
+            {
+                return _currentInfoString;
+            }
+            set
+            {
+                if (_currentInfoString == value) return;
+                _currentInfoString = value;
+                RaisePropertyChanged(CurrentInfoStringPropertyName);
+            }
+        }
+        #endregion
 
         public string Value { get; set; }
-        public Type TheType { get; set; }
+
+        private ObservableCollection<BaseProperty> _currentEntityProperties;
+        private string _currentInfoString;
 
         public PropertyViewModel()
         {
             Messenger.Default.Register<BaseEntity>(this, OnReceivedEntity);
             _currentEntityProperties = new ObservableCollection<BaseProperty>();
-            _currentlySelectedBaseEntity = new BaseEntity();
-            _buzzer = new Buzzer();
-            _kamikazeBuzzer = new KamikazeBuzzer();
-            _mech = new Mech();
-            _player = new Player();
-            _spider = new Spider();
-            _currentEntityProperties = _spider.PropertyCollection;
+            _currentInfoString = "No entity selected. Click one an entity on the list to the left to start your editing.";
         }
 
         private void OnReceivedEntity<T>(T obj)
         {
-            if (obj.GetType() == _buzzer.GetType())
+            CurrentInfoString = "Entity selected! Edit the stats of your choice and press Save to export the information";
+            if (obj.GetType() == typeof(Buzzer))
             {
                 Buzzer buzzer = obj as Buzzer;
                 if (buzzer != null)
@@ -127,7 +70,7 @@ namespace Innlevering02.ViewModel
                     CurrentEntityProperties = buzzer.PropertyCollection;
                 }
             }
-            else if (obj.GetType() == _kamikazeBuzzer.GetType())
+            else if (obj.GetType() == typeof(KamikazeBuzzer))
             {
                 KamikazeBuzzer kamikazeBuzzer = obj as KamikazeBuzzer;
                 if (kamikazeBuzzer != null)
@@ -135,7 +78,7 @@ namespace Innlevering02.ViewModel
                     CurrentEntityProperties = kamikazeBuzzer.PropertyCollection;
                 }
             }
-            else if (obj.GetType() == _mech.GetType())
+            else if (obj.GetType() == typeof(Mech))
             {
                 Mech mech = obj as Mech;
                 if (mech != null)
@@ -143,12 +86,28 @@ namespace Innlevering02.ViewModel
                     CurrentEntityProperties = mech.PropertyCollection;
                 }
             }
-            else if (obj.GetType() == _spider.GetType())
+            else if (obj.GetType() == typeof(Spider))
             {
                 Spider spider = obj as Spider;
                 if (spider != null)
                 {
                     CurrentEntityProperties = spider.PropertyCollection;
+                }
+            }
+            else if (obj.GetType() == typeof(Player))
+            {
+                Player player = obj as Player;
+                if (player != null)
+                {
+                    CurrentEntityProperties = player.PropertyCollection;
+                }
+            }
+            else if (obj.GetType() == typeof(ConfusedMech))
+            {
+                ConfusedMech confusedMech = obj as ConfusedMech;
+                if (confusedMech != null)
+                {
+                    CurrentEntityProperties = confusedMech.PropertyCollection;
                 }
             }
         }

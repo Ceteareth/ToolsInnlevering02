@@ -12,15 +12,12 @@ namespace Innlevering02.Model
     /// </summary>
     public class Player : BaseEntity
     {
-        /// <summary>
-        /// Initializes a new instance of the Player class.
-        /// </summary>
         public Player()
         {
             Name = "Player";
-            Health = new Health(150);
+            Health = new Health(500);
             Damage = new Damage(20);
-            MovementSpeed = new MovementSpeed(10);
+            MovementSpeed = new MovementSpeed(20);
             Invincible = new Invincible(true);
             AddPropertiesToCollection();
         }

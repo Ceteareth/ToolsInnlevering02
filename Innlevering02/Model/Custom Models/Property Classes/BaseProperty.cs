@@ -11,16 +11,11 @@ namespace Innlevering02.Model.Custom_Models.Property_Classes
     /// </summary>
     public abstract class BaseProperty : ViewModelBase
     {
-        public String Name
+        public abstract String Name
         {
-            get;
-            internal set;
+            get; set;
         }
 
-        protected BaseProperty()
-        {
-        }
-
-        public abstract object ReturnValue();
+        public abstract object GetValue();
     }
 }

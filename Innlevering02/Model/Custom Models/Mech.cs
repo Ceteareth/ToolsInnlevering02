@@ -18,9 +18,9 @@ namespace Innlevering02.Model
         public Mech()
         {
             Name = "Mech";
-            Health = new Health();
-            Damage = new Damage();
-            MovementSpeed = new MovementSpeed();
+            Health = new Health(200);
+            Damage = new Damage(20);
+            MovementSpeed = new MovementSpeed(0.5f);
             Invincible = new Invincible();
             AddPropertiesToCollection();
         }

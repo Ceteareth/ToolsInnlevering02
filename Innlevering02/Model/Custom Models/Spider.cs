@@ -12,17 +12,24 @@ namespace Innlevering02.Model
     /// </summary>
     public class Spider : BaseEntity
     {
-        /// <summary>
-        /// Initializes a new instance of the Spider class.
-        /// </summary>
+        public Creepy Creepy { get; set; }
+
         public Spider()
         {
             Name = "Spider";
-            Health = new Health(20);
+            Health = new Health(10);
             Damage = new Damage(5);
-            MovementSpeed = new MovementSpeed(20);
-            Invincible = new Invincible(false);
+            MovementSpeed = new MovementSpeed(5);
+            Invincible = new Invincible();
+            Creepy = new Creepy(true);
+
             AddPropertiesToCollection();
+        }
+
+        public new void AddPropertiesToCollection()
+        {
+            base.AddPropertiesToCollection();
+            PropertyCollection.Add(Creepy);
         }
     }
 }

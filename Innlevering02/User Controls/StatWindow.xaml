@@ -9,7 +9,7 @@
              DataContext="{Binding Properties, Source={StaticResource Locator}}">
     
     <UserControl.Resources>
-        <!-- Default DataTemplate -->
+
         <DataTemplate x:Key="DefaultDataTemplate">
             <Grid Margin="4">
                 <Grid.ColumnDefinitions>
@@ -21,7 +21,6 @@
             </Grid>
         </DataTemplate>
 
-        <!-- DataTemplate for Booleans -->
         <DataTemplate x:Key="BooleanDataTemplate">
             <Grid Margin="4">
                 <Grid.ColumnDefinitions>
@@ -33,7 +32,6 @@
             </Grid>
         </DataTemplate>
 
-        <!-- DataTemplate Selector -->
         <innlevering02:PropertyDataTemplateSelector x:Key="TemplateSelector"
               DefaultDataTemplate="{StaticResource DefaultDataTemplate}"
               BooleanDataTemplate="{StaticResource BooleanDataTemplate}" />
@@ -46,8 +44,8 @@
         
         <Grid Grid.Column="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
             <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Attributes" VerticalAlignment="Center"/>
@@ -61,6 +59,15 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
+            <Grid Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Background="White">Helpful info</Label>
+                <TextBox IsReadOnly="True" TextWrapping="Wrap" Grid.Row="1" Background="White" Text="{Binding CurrentInfoString}" />
+            </Grid>
+            
         </Grid>
     </Grid>
 </UserControl>

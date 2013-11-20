@@ -11,21 +11,21 @@ namespace Innlevering02.Model.Custom_Models.Property_Classes
     /// </summary>
     public class MovementSpeed : BaseProperty
     {
+        private string _name = "Movement speed";
+        public override string Name { get { return _name; } set { _name = value; } }
         public float Value { get; private set; }
 
         public MovementSpeed()
         {
-            Name = "Movement speed";
             Value = 0.0f;
         }
 
         public MovementSpeed(float movementSpeed)
         {
-            Name = "Movement speed";
             Value = movementSpeed;
         }
 
-        public override object ReturnValue()
+        public override object GetValue()
         {
             return Value;
         }

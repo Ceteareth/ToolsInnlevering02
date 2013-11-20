@@ -11,21 +11,21 @@ namespace Innlevering02.Model.Custom_Models.Property_Classes
     /// </summary>
     public class Invincible : BaseProperty
     {
+        private string _name = "Invincible";
+        public override string Name { get { return _name; } set { _name = value; } }
         public bool Value { get; private set; }
 
         public Invincible()
         {
-            Name = "Invincible";
             Value = false;
         }
 
         public Invincible(bool isInvincible)
         {
-            Name = "Invincible";
             Value = isInvincible;
         }
 
-        public override object ReturnValue()
+        public override object GetValue()
         {
             return Value;
         }
