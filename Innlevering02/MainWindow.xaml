@@ -28,9 +28,9 @@
         
         <Menu IsMainMenu="True">
             <MenuItem Header="_File">
-                <MenuItem Header="_Save"></MenuItem>
-                <MenuItem Header="_Open"></MenuItem>
-                <MenuItem Header="_Close"></MenuItem>
+                <MenuItem Header="_Save" Command="{Binding SaveCommand}" />
+                <MenuItem Header="_Open" Command="{Binding LoadCommand}" />
+                <MenuItem Header="_Close" Command="{Binding CloseCommand}" />
             </MenuItem>
         </Menu>
         

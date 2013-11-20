@@ -1,9 +1,12 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections;
+using System.Collections.ObjectModel;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using Innlevering02.Model.Custom_Models;
 using Innlevering02.Model.Custom_Models.Custom_Models.Custom_Models;
 using Innlevering02.Model.Custom_Models.Custom_Models.Custom_Models.Property_Classes;
+using Newtonsoft.Json;
 
 namespace Innlevering02.ViewModel
 {
@@ -50,6 +53,7 @@ namespace Innlevering02.ViewModel
         public PropertyViewModel()
         {
             Messenger.Default.Register<BaseEntity>(this, OnReceivedEntity);
+
             _currentEntityProperties = new ObservableCollection<BaseProperty>();
             _currentInfoString = "No entity selected. Click one an entity on the list to the left to start your editing.";
         }

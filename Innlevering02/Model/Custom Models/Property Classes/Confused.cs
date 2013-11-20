@@ -10,7 +10,7 @@ namespace Innlevering02.Model.Custom_Models.Custom_Models.Custom_Models.Property
     {
         private string _name = "Confused";
         public override string Name { get { return _name; } set { _name = value; } }
-        public bool Value { get; protected set; }
+        public bool Value { get; set; }
 
         public Confused()
         {

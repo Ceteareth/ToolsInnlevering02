@@ -11,13 +11,15 @@ namespace Innlevering02.Model.Custom_Models.Custom_Models.Custom_Models
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class BaseEntity : ViewModelBase
+    public class BaseEntity
     {
         public string Name { get; set; }
         public Health Health { get; set; }
         public Damage Damage { get; set; }
         public MovementSpeed MovementSpeed { get; set; }
         public Invincible Invincible { get; set; }
+
+        [NonSerialized]
         public ObservableCollection<BaseProperty> PropertyCollection; 
 
         /// <summary>

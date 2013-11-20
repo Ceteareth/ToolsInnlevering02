@@ -13,7 +13,7 @@ namespace Innlevering02.Model.Custom_Models.Custom_Models.Custom_Models.Property
     {
         private string _name = "Movement speed";
         public override string Name { get { return _name; } set { _name = value; } }
-        public float Value { get; private set; }
+        public float Value { get; set; }
 
         public MovementSpeed()
         {

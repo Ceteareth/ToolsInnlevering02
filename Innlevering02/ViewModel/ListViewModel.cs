@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Mime;
+using System.Windows;
+using System.Windows.Input;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using Innlevering02.Model.Custom_Models;
 using Innlevering02.Model.Custom_Models.Custom_Models.Custom_Models;
+using Newtonsoft.Json;
 
 namespace Innlevering02.ViewModel
 {
@@ -16,7 +21,7 @@ namespace Innlevering02.ViewModel
     /// </summary>
     public class ListViewModel : ViewModelBase
     {
-
+        #region Properties
         public ObservableCollection<BaseEntity> UnnamedEntityCollection
         {
             get; private set;
@@ -29,7 +34,6 @@ namespace Innlevering02.ViewModel
             set
             {
                 _unnamedEntityIndex = value;
-                Console.WriteLine(UnnamedEntityCollection.ElementAt(value));
                 Messenger.Default.Send<BaseEntity, PropertyViewModel>(UnnamedEntityCollection.ElementAt(value));
             }
         }
@@ -47,10 +51,30 @@ namespace Innlevering02.ViewModel
             set
             {
                 _namedEntityIndex = value;
-                Console.WriteLine(NamedEntityCollection.ElementAt(value));
                 Messenger.Default.Send<BaseEntity, PropertyViewModel>(NamedEntityCollection.ElementAt(value));
             }
         }
+        #endregion
+
+        #region Commands
+        public ICommand SaveCommand
+        {
+            get;
+            internal set;
+        }
+
+        public ICommand LoadCommand
+        {
+            get;
+            internal set;
+        }
+
+        public ICommand CloseCommand
+        {
+            get;
+            internal set;
+        }
+        #endregion
 
         public ListViewModel()
         {
@@ -69,6 +93,31 @@ namespace Innlevering02.ViewModel
                 new ConfusedMech()
             };
             NamedEntityIndex = 0;
+
+            CreateCommands();
+        }
+
+        private void CreateCommands()
+        {
+            SaveCommand = new RelayCommand(SaveExecute);
+            LoadCommand = new RelayCommand(LoadExecute);
+            CloseCommand = new RelayCommand(CloseExecute);
+        }
+
+        public void SaveExecute()
+        {
+            string json = JsonConvert.SerializeObject(UnnamedEntityCollection, Formatting.Indented);
+            System.IO.File.WriteAllText(@"C:\temp\Temp.json", json);
+        }
+
+        public void LoadExecute()
+        {
+            
+        }
+
+        public void CloseExecute()
+        {
+            Environment.Exit(0);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Innlevering02.Model.Custom_Models.Custom_Models.Custom_Models.Property
     {
         private string _name = "Invincible";
         public override string Name { get { return _name; } set { _name = value; } }
-        public bool Value { get; private set; }
+        public bool Value { get; set; }
 
         public Invincible()
         {
