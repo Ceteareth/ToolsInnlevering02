@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Mime;
+using System.Runtime.Remoting.Channels;
 using System.Windows;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
@@ -77,6 +78,7 @@ namespace Innlevering02.ViewModel
             get;
             internal set;
         }
+
         #endregion
 
         public ListViewModel()
@@ -113,13 +115,34 @@ namespace Innlevering02.ViewModel
             string namedEntitites = JsonConvert.SerializeObject(NamedEntityCollection, Formatting.Indented);
             //add a special character between the strings for easy separation later
             string serializedData = string.Concat(unnamedEntities,"£", namedEntitites);
-            System.IO.File.WriteAllText(@"C:\temp\Temp.json", serializedData);
+
+            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog
+            {
+                FileName = "",
+                DefaultExt = ".json",
+                Filter = "Serialized data (.json)|*.json"
+            };
+
+            bool? result = dlg.ShowDialog();
+            if(result == true)
+                System.IO.File.WriteAllText(dlg.FileName, serializedData);
         }
 
         public void LoadExecute()
         {
-            String serializedData = System.IO.File.ReadAllText(@"C:\temp\Temp.json");
-            String[] substring = Regex.Split(serializedData,"£");
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog
+            {
+                FileName = "",
+                DefaultExt = ".json",
+                Filter = "JSON file (.json)|*.json"
+            };
+
+            bool? result = dlg.ShowDialog();
+
+            if (result != true) return;
+
+            String serializedData = System.IO.File.ReadAllText(dlg.FileName);
+            String[] substring = Regex.Split(serializedData, "£");
             ObservableCollection<BaseEntity> temp = JsonConvert.DeserializeObject<ObservableCollection<BaseEntity>>(substring[0]);
             UnnamedEntityCollection.Clear();
 
