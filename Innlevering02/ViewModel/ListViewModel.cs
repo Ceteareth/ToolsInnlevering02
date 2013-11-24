@@ -10,6 +10,7 @@ using GalaSoft.MvvmLight.Messaging;
 using Innlevering02.Model.Custom_Models;
 using Innlevering02.Model.Custom_Models.Custom_Models.Custom_Models;
 using Newtonsoft.Json;
+using System.Text.RegularExpressions;
 
 namespace Innlevering02.ViewModel
 {
@@ -34,7 +35,8 @@ namespace Innlevering02.ViewModel
             set
             {
                 _unnamedEntityIndex = value;
-                Messenger.Default.Send<BaseEntity, PropertyViewModel>(UnnamedEntityCollection.ElementAt(value));
+                if(value >= 0 && value < UnnamedEntityCollection.Count)
+                    Messenger.Default.Send<BaseEntity, PropertyViewModel>(UnnamedEntityCollection.ElementAt(value));
             }
         }
 
@@ -108,13 +110,21 @@ namespace Innlevering02.ViewModel
         {
             string unnamedEntities = JsonConvert.SerializeObject(UnnamedEntityCollection, Formatting.Indented);
             string namedEntitites = JsonConvert.SerializeObject(NamedEntityCollection, Formatting.Indented);
-            string serializedData = string.Concat(unnamedEntities, namedEntitites);
+            //add a special character between the strings for easy separation later
+            string serializedData = string.Concat(unnamedEntities,"£", namedEntitites);
             System.IO.File.WriteAllText(@"C:\temp\Temp.json", serializedData);
         }
 
         public void LoadExecute()
         {
-            
+            String serializedData = System.IO.File.ReadAllText(@"C:\temp\Temp.json");
+            String[] substring = Regex.Split(serializedData,"£");
+            ObservableCollection<BaseEntity> temp = JsonConvert.DeserializeObject<ObservableCollection<BaseEntity>>(substring[0]);
+            UnnamedEntityCollection.Clear();
+            foreach (BaseEntity b in temp)
+            {
+                UnnamedEntityCollection.Add(b);
+            }
         }
 
         public void CloseExecute()
