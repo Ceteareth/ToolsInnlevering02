@@ -7,9 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              DataContext="{Binding Properties, Source={StaticResource Locator}}">
+            <!-- Gets the datacontext from the locator, trying to find "Properties" -->
     
     <UserControl.Resources>
-
+        <!-- This template is selected for everything that isn't a bool. -->
         <DataTemplate x:Key="DefaultDataTemplate">
             <Grid Margin="4">
                 <Grid.ColumnDefinitions>
@@ -20,7 +21,8 @@
                 <TextBox Grid.Column="1" Text="{Binding Value }" />
             </Grid>
         </DataTemplate>
-
+        
+        <!-- This template is selected for boolean property types. -->
         <DataTemplate x:Key="BooleanDataTemplate">
             <Grid Margin="4">
                 <Grid.ColumnDefinitions>
@@ -31,11 +33,14 @@
                 <CheckBox Grid.Column="1" IsChecked="{Binding Value }" />
             </Grid>
         </DataTemplate>
-
+        
+        <!-- Starts an instance of the template selector mentioned 
+        which determines if a property should be displayed with a textbox or checkbox -->
         <innlevering02:PropertyDataTemplateSelector x:Key="TemplateSelector"
               DefaultDataTemplate="{StaticResource DefaultDataTemplate}"
               BooleanDataTemplate="{StaticResource BooleanDataTemplate}" />
     </UserControl.Resources>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -49,16 +54,23 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Attributes" VerticalAlignment="Center"/>
+            
+            <!-- Binds the itemsource of the listbox to the property collection, so everything is 
+            displayed nicely. The choice of text/checkbox is done with datatemplates. See 
+            PropertyDataTemplateSelector.cs or over. -->
             <ListBox Grid.Column="0" ItemsSource="{Binding CurrentEntityProperties}" Grid.IsSharedSizeScope="True" 
                  HorizontalContentAlignment="Stretch" 
                  ItemTemplateSelector="{StaticResource TemplateSelector}" />
         </Grid>
         
+        <!-- Helpful information for the user -->
         <Grid Column="1">
+            
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
+            
             <Grid Row="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
@@ -68,6 +80,12 @@
                 <TextBox IsReadOnly="True" TextWrapping="Wrap" Grid.Row="1" Background="White" Text="{Binding CurrentInfoString}" />
             </Grid>
             
+            <Grid Row="1">
+                <TextBox IsReadOnly="True" TextWrapping="Wrap">
+                    Unfortunately, the view will not update on tab changes.
+                    This will be fixed in the next update.
+                </TextBox>
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>

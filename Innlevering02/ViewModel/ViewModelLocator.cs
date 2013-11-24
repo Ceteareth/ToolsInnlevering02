@@ -25,26 +25,17 @@ namespace Innlevering02.ViewModel
     /// </summary>
     public class ViewModelLocator
     {
+        // Near default state ViewModelLocator.
         static ViewModelLocator()
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-            if (ViewModelBase.IsInDesignModeStatic)
-            {
-                SimpleIoc.Default.Register<IDataService, Design.DesignDataService>();
-            }
-            else
-            {
-                SimpleIoc.Default.Register<IDataService, DataService>();
-            }
-
+            // Registers the two viewmodels we're using.
             SimpleIoc.Default.Register<PropertyViewModel>();
             SimpleIoc.Default.Register<ListViewModel>();
         }
 
-        /// <summary>
-        /// Gets the Main property.
-        /// </summary>
+        // Gets the propertyviewmodel property
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
             "CA1822:MarkMembersAsStatic",
             Justification = "This non-static member is needed for data binding purposes.")]
@@ -56,6 +47,10 @@ namespace Innlevering02.ViewModel
             }
         }
 
+        // Gets the listviewmodel property
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
+            "CA1822:MarkMembersAsStatic",
+            Justification = "This non-static member is needed for data binding purposes.")]
         public ListViewModel EntityList
         {
             get
@@ -64,9 +59,7 @@ namespace Innlevering02.ViewModel
             }
         }
 
-        /// <summary>
-        /// Cleans up all the resources.
-        /// </summary>
+        // Currently no cleanup that needs to be done.
         public static void Cleanup()
         {
         }

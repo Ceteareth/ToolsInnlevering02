@@ -3,12 +3,8 @@ using GalaSoft.MvvmLight;
 
 namespace Innlevering02.Model.Custom_Models.Custom_Models.Custom_Models.Property_Classes
 {
-    /// <summary>
-    /// This class contains properties that a View can data bind to.
-    /// <para>
-    /// See http://www.galasoft.ch/mvvm
-    /// </para>
-    /// </summary>
+    // Default property class which can handle different values of single type.
+    // Used for displaying and serializing.
     public sealed class BaseProperty
     {
         public string Name { get; set; }

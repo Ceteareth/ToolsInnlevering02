@@ -10,22 +10,16 @@
         Title="MVVM Light Application"
         DataContext="{Binding EntityList, Source={StaticResource Locator}}" ResizeMode="NoResize"
         xmlns:userControl="clr-namespace:Innlevering02.User_Controls" >
-
-    <Window.Resources>
-
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Skins/MainSkin.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Window.Resources>
-
+        <!-- Sets the datacontext to the entitylist, with the help of the locator. Also
+        sets the namespace for the user controls.-->
+        
     <Grid x:Name="LayoutRoot">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-
+        
+        <!-- Nifty menu for save/load/close functions. -->
         <Menu IsMainMenu="True">
             <MenuItem Header="_File">
                 <MenuItem Header="_Save" Command="{Binding SaveCommand}" />
@@ -34,6 +28,8 @@
             </MenuItem>
         </Menu>
 
+        <!-- Creates a tabcontrol, with tabs for named and unnamed entities. 
+        Uses the same user control to display properties in both. -->
         <TabControl Grid.Row="1">
             <TabItem x:Name="UnnamedEntities" Header="Unnamed entities" >
                 <Grid x:Name="UnnamedEntityGrid">
@@ -54,7 +50,7 @@
                     <userControl:StatWindow Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"></userControl:StatWindow>
                 </Grid>
             </TabItem>
-
+            
             <TabItem x:Name="NamedEntities" Header="Named entities">
                 <Grid x:Name="NamedEntityGrid">
 

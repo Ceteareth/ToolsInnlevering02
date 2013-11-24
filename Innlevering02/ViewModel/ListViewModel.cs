@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Net.Mime;
-using System.Runtime.Remoting.Channels;
-using System.Windows;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
-using Innlevering02.Model.Custom_Models;
 using Innlevering02.Model.Custom_Models.Custom_Models.Custom_Models;
 using Innlevering02.Model.Custom_Models.Custom_Models.Custom_Models.Property_Classes;
 using Newtonsoft.Json;
@@ -16,20 +12,17 @@ using System.Text.RegularExpressions;
 
 namespace Innlevering02.ViewModel
 {
-    /// <summary>
-    /// This class contains properties that a View can data bind to.
-    /// <para>
-    /// See http://www.galasoft.ch/mvvm
-    /// </para>
-    /// </summary>
     public class ListViewModel : ViewModelBase
     {
         #region Properties
+
+        // A collection we bind to a listbox to display all unnamed entities
         public ObservableCollection<BaseEntity> UnnamedEntityCollection
         {
             get; private set;
         }
 
+        // Index to sync changes in selection in the list with the displayed properties on the right.
         private int _unnamedEntityIndex;
         public int UnnamedEntityIndex
         {
@@ -37,17 +30,20 @@ namespace Innlevering02.ViewModel
             set
             {
                 _unnamedEntityIndex = value;
+                // If the value is valid, send a message to the property viewmodel to change the displayed values.
                 if(value >= 0 && value < UnnamedEntityCollection.Count)
                     Messenger.Default.Send<BaseEntity, PropertyViewModel>(UnnamedEntityCollection.ElementAt(value));
             }
         }
 
+        // Same as the unnamed collection, just for named entities/bosses
         public ObservableCollection<BaseEntity> NamedEntityCollection
         {
             get;
             private set;
         }
 
+        // Same as over.
         private int _namedEntityIndex;
         public int NamedEntityIndex
         {
@@ -62,18 +58,21 @@ namespace Innlevering02.ViewModel
         #endregion
 
         #region Commands
+        // Command binding for the save function on the menu
         public ICommand SaveCommand
         {
             get;
             internal set;
         }
 
+        // Command binding for the load function on the menu
         public ICommand LoadCommand
         {
             get;
             internal set;
         }
 
+        // Command binding for the load function on the menu
         public ICommand CloseCommand
         {
             get;
@@ -82,6 +81,7 @@ namespace Innlevering02.ViewModel
 
         #endregion
 
+        // Creates some default lists for editing stright off the bat, and sets the index to display the first in the list
         public ListViewModel()
         {
             UnnamedEntityCollection = new ObservableCollection<BaseEntity>
@@ -103,6 +103,7 @@ namespace Innlevering02.ViewModel
             CreateCommands();
         }
 
+        // Creates all the commands used in the menu
         private void CreateCommands()
         {
             SaveCommand = new RelayCommand(SaveExecute);
@@ -110,6 +111,7 @@ namespace Innlevering02.ViewModel
             CloseCommand = new RelayCommand(CloseExecute);
         }
 
+        // Displays a file dialog and then saves a JSON serialized version of the collections at that place
         public void SaveExecute()
         {
             string unnamedEntities = JsonConvert.SerializeObject(UnnamedEntityCollection, Formatting.Indented);
@@ -129,6 +131,7 @@ namespace Innlevering02.ViewModel
                 System.IO.File.WriteAllText(dlg.FileName, serializedData);
         }
 
+        // Tries to deserialize and populate the lists with information from a previously saved JSON file
         public void LoadExecute()
         {
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog
@@ -140,10 +143,14 @@ namespace Innlevering02.ViewModel
 
             bool? result = dlg.ShowDialog();
 
+            // If the user doesn't click ok, don't do anything
             if (result != true) return;
 
+            // Gets all the information from the JSON file, splits it up into two pieces, one for unnamed entities and one for named
             String serializedData = System.IO.File.ReadAllText(dlg.FileName);
             String[] substring = Regex.Split(serializedData, "£");
+
+            // Deserializes the unnamed list, clears the previously loaded list, and then populates the list with the new information
             ObservableCollection<BaseEntity> temp = JsonConvert.DeserializeObject<ObservableCollection<BaseEntity>>(substring[0]);
             UnnamedEntityCollection.Clear();
 
@@ -151,6 +158,8 @@ namespace Innlevering02.ViewModel
             {
                 UnnamedEntityCollection.Add(b);
             }
+
+            // Clears the temporary list and deserializes the unnamed entities and puts that into the correct list.
             temp.Clear();
             temp = JsonConvert.DeserializeObject<ObservableCollection<BaseEntity>>(substring[1]);
             NamedEntityCollection.Clear();
@@ -161,6 +170,7 @@ namespace Innlevering02.ViewModel
             }
         }
 
+        // Simply closes the program
         public void CloseExecute()
         {
             Environment.Exit(0);

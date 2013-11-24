@@ -5,26 +5,20 @@ using Innlevering02.Model.Custom_Models.Custom_Models.Custom_Models.Property_Cla
 
 namespace Innlevering02.Model.Custom_Models.Custom_Models.Custom_Models
 {
-    /// <summary>
-    /// This class contains properties that a View can data bind to.
-    /// <para>
-    /// See http://www.galasoft.ch/mvvm
-    /// </para>
-    /// </summary>
+    // Base entity class which basically holds its own name, as well as a collection of properties.
+    // The collection is used both for serializing and display.
     public class BaseEntity
     {
         public string Name { get; set; }
         public ObservableCollection<BaseProperty> PropertyCollection; 
 
-        /// <summary>
-        /// Initializes a new instance of the BaseEntity class.
-        /// </summary>
         public BaseEntity()
         {
             Name = "Unknown";
             PropertyCollection = new ObservableCollection<BaseProperty>();
         }
 
+        // Takes a (more or less) unlimited amount of BaseProperties. Useful if one wishes to have many.
         public BaseEntity(string name, params BaseProperty[] listBaseProperty)
         {
             PropertyCollection = new ObservableCollection<BaseProperty>();

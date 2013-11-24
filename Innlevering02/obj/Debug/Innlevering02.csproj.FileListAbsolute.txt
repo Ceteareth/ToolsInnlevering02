@@ -64,7 +64,6 @@ C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInn
 C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\bin\Debug\GalaSoft.MvvmLight.Extras.WPF4.xml
 C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\bin\Debug\Microsoft.Practices.ServiceLocation.xml
 C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\obj\Debug\Innlevering02.csprojResolveAssemblyReference.cache
-C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\obj\Debug\Skins\MainSkin.baml
 C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\obj\Debug\MainWindow.g.cs
 C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\obj\Debug\User Controls\StatWindow.g.cs
 C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\obj\Debug\App.g.cs
@@ -90,4 +89,3 @@ C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInn
 C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
 C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\bin\Debug\Newtonsoft.Json.pdb
 C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\bin\Debug\Innlevering02.exe.config
