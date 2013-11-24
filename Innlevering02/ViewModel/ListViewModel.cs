@@ -55,6 +55,7 @@ namespace Innlevering02.ViewModel
             set
             {
                 _namedEntityIndex = value;
+                if (value >= 0 && value < NamedEntityCollection.Count)
                 Messenger.Default.Send<BaseEntity, PropertyViewModel>(NamedEntityCollection.ElementAt(value));
             }
         }
@@ -149,6 +150,14 @@ namespace Innlevering02.ViewModel
             foreach (BaseEntity b in temp)
             {
                 UnnamedEntityCollection.Add(b);
+            }
+            temp.Clear();
+            temp = JsonConvert.DeserializeObject<ObservableCollection<BaseEntity>>(substring[1]);
+            NamedEntityCollection.Clear();
+
+            foreach (BaseEntity b in temp)
+            {
+                NamedEntityCollection.Add(b);
             }
         }
 
