@@ -27,11 +27,11 @@ namespace Innlevering02.Model.Custom_Models.Custom_Models.Custom_Models
         /// </summary>
         public BaseEntity()
         {
-            Name = "BaseEntity";
+            /*Name = "BaseEntity";
             Health = new Health();
             Damage = new Damage();
             MovementSpeed = new MovementSpeed();
-            Invincible = new Invincible();
+            Invincible = new Invincible();*/
             PropertyCollection = new ObservableCollection<BaseProperty>();
         }
 
