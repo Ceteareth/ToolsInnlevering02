@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.ObjectModel;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
@@ -61,54 +62,8 @@ namespace Innlevering02.ViewModel
         private void OnReceivedEntity<T>(T obj)
         {
             CurrentInfoString = "Entity selected! Edit the stats of your choice and press Save to export the information";
-            if (obj.GetType() == typeof(Buzzer))
-            {
-                Buzzer buzzer = obj as Buzzer;
-                if (buzzer != null)
-                {
-                    CurrentEntityProperties = buzzer.PropertyCollection;
-                }
-            }
-            else if (obj.GetType() == typeof(KamikazeBuzzer))
-            {
-                KamikazeBuzzer kamikazeBuzzer = obj as KamikazeBuzzer;
-                if (kamikazeBuzzer != null)
-                {
-                    CurrentEntityProperties = kamikazeBuzzer.PropertyCollection;
-                }
-            }
-            else if (obj.GetType() == typeof(Mech))
-            {
-                Mech mech = obj as Mech;
-                if (mech != null)
-                {
-                    CurrentEntityProperties = mech.PropertyCollection;
-                }
-            }
-            else if (obj.GetType() == typeof(Spider))
-            {
-                Spider spider = obj as Spider;
-                if (spider != null)
-                {
-                    CurrentEntityProperties = spider.PropertyCollection;
-                }
-            }
-            else if (obj.GetType() == typeof(Player))
-            {
-                Player player = obj as Player;
-                if (player != null)
-                {
-                    CurrentEntityProperties = player.PropertyCollection;
-                }
-            }
-            else if (obj.GetType() == typeof(ConfusedMech))
-            {
-                ConfusedMech confusedMech = obj as ConfusedMech;
-                if (confusedMech != null)
-                {
-                    CurrentEntityProperties = confusedMech.PropertyCollection;
-                }
-            }
+            BaseEntity baseEntity = obj as BaseEntity;
+            if (baseEntity != null) CurrentEntityProperties = baseEntity.PropertyCollection;
         }
     }
 }

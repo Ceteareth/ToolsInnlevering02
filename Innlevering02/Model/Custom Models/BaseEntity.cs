@@ -14,12 +14,6 @@ namespace Innlevering02.Model.Custom_Models.Custom_Models.Custom_Models
     public class BaseEntity
     {
         public string Name { get; set; }
-        public Health Health { get; set; }
-        public Damage Damage { get; set; }
-        public MovementSpeed MovementSpeed { get; set; }
-        public Invincible Invincible { get; set; }
-
-        [NonSerialized]
         public ObservableCollection<BaseProperty> PropertyCollection; 
 
         /// <summary>
@@ -27,20 +21,19 @@ namespace Innlevering02.Model.Custom_Models.Custom_Models.Custom_Models
         /// </summary>
         public BaseEntity()
         {
-            /*Name = "BaseEntity";
-            Health = new Health();
-            Damage = new Damage();
-            MovementSpeed = new MovementSpeed();
-            Invincible = new Invincible();*/
+            Name = "Unknown";
             PropertyCollection = new ObservableCollection<BaseProperty>();
         }
 
-        protected void AddPropertiesToCollection()
+        public BaseEntity(string name, params BaseProperty[] listBaseProperty)
         {
-            PropertyCollection.Add(Health);
-            PropertyCollection.Add(Damage);
-            PropertyCollection.Add(MovementSpeed);
-            PropertyCollection.Add(Invincible);
+            PropertyCollection = new ObservableCollection<BaseProperty>();
+            Name = name;
+
+            foreach (BaseProperty property in listBaseProperty)
+            {
+                PropertyCollection.Add(property);
+            }
         }
     }
 }

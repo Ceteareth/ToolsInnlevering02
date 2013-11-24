@@ -9,13 +9,21 @@ namespace Innlevering02.Model.Custom_Models.Custom_Models.Custom_Models.Property
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public abstract class BaseProperty
+    public sealed class BaseProperty
     {
-        public abstract String Name
+        public string Name { get; set; }
+        public object Value { get; set; }
+
+        public BaseProperty()
         {
-            get; set;
+            Name = "Unknown";
+            Value = null;
         }
 
-        public abstract object GetValue();
+        public BaseProperty(string name, object value)
+        {
+            Name = name;
+            Value = value;
+        }
     }
 }

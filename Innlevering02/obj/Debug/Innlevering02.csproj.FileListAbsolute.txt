@@ -88,6 +88,6 @@ C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInn
 C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\bin\Debug\ru\System.Windows.Interactivity.resources.dll
 C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
 C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
-C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\bin\Debug\Newtonsoft.Json.pdb
 C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Torkill\Dropbox\Skole\PG5200 - Tools programming\Innlevering02\ToolsInnlevering02\Innlevering02\bin\Debug\Innlevering02.exe.config
